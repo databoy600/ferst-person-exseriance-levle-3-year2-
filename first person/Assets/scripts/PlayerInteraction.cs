@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public GameObject hand;
+    public GameObject cam;
+    
+    public float lookDistance;
+
+    public LayerMask layerMask;
+
+    RaycastHit hit;
+
     public Collider triggerColl;
 
     GameManager gmSc;
@@ -20,10 +29,7 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (triggerColl == null)
-        {
-            gmSc.infoText.text = " ";
-        }
+      // OTHER INTERACSHONS
         if (triggerColl != null && Input.GetKeyDown(KeyCode.E))
         {
             if (triggerColl.gameObject.CompareTag("Lock") && gmSc.hasKey)
@@ -42,6 +48,34 @@ public class PlayerInteraction : MonoBehaviour
         
 
         }
+        
+        // WEPONS
+        if (hand.transform.childCount == 1 && Input.GetKeyDown(KeyCode.F))
+        {
+           hand.transform.GetChild(0).gameObject.GetComponent<Rigidbody>().isKinematic = false;
+           hand.transform.GetChild(0).gameObject.transform.parent = null;
+        }
+        else if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, lookDistance, layerMask))
+        {
+            gmSc.infoText.text = "press Left click to pick Up";
+
+            if (hand.transform.childCount == 0 && Input.GetKeyDown(KeyCode.E))
+            {
+                hit.collider.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                hit.collider.gameObject.transform.parent = hand.transform;
+                hit.collider.gameObject.transform.position = hand.transform.position;
+                hit.collider.gameObject.transform.rotation = hand.transform.rotation;
+            }
+        }
+        else
+        {
+            if (triggerColl == null)
+           {
+              gmSc.infoText.text = " ";
+           }
+         
+        }
+        Debug.DrawRay(cam.transform.position, cam.transform.forward * lookDistance, Color.yellow);
       
     }
 
