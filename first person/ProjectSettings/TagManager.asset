@@ -7,6 +7,10 @@ TagManager:
   - Key
   - Lock
   - lever
+  - healthSlider
+  - Enemy
+  - spawn
+  - spawnPoints
   layers:
   - Default
   - TransparentFX
