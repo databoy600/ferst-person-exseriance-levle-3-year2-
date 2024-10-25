@@ -28,12 +28,12 @@ public class lever : MonoBehaviour
 
         if (isOn)
         {
-            bridge.position = Vector3.Lerp(bridge.position, pointB.position, moveSpeed);
+            bridge.position = Vector3.Lerp(bridge.position, pointB.position, moveSpeed * Time.deltaTime);
 
         }
         else
         {
-            bridge.position = Vector3.Lerp(bridge.position, pointA.position, moveSpeed);
+            bridge.position = Vector3.Lerp(bridge.position, pointA.position, moveSpeed * Time.deltaTime);
         }
     }
 }
