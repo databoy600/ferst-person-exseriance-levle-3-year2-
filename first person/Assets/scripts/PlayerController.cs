@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class NewBehaviourScript : MonoBehaviour
+using UnityEngine.SceneManagement;
+public class PlayerController : MonoBehaviour
 {
     public float movementSpeed;
     
@@ -21,6 +21,8 @@ public class NewBehaviourScript : MonoBehaviour
     public CharacterController controller;
     public GameObject cam;
     public GameObject playerHead;
+
+    public string spawnPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -79,5 +81,20 @@ public class NewBehaviourScript : MonoBehaviour
   
 
     }
+
+ public IEnumerator ResetPos()
+    {
+        controller.enabled = false;
+        transform.position = GameObject.Find(spawnPoint).transform.position;
+        yield return new WaitForSeconds(.1f);
+        controller.enabled = true;
+    }
+    public IEnumerator LoadNewScene(string levelName)
+    {
+        controller.enabled = false;
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(levelName);
+    }
+
 
 }
