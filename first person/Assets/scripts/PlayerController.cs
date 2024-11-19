@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public GameObject playerHead;
 
     public string spawnPoint;
+    public Animator bbox;
 
     // Start is called before the first frame update
     void Start()
@@ -44,8 +45,13 @@ public class PlayerController : MonoBehaviour
 
            // }
        // }
+       if (transform.position.y < -20f)
+       {
+        StartCoroutine(ResetOnDeath());
+       }
 
     }
+    
 
     void Movement()
     {
@@ -82,8 +88,28 @@ public class PlayerController : MonoBehaviour
 
     }
 
+     void OnTriggerEnter(Collider other) 
+     {
+        if (other.gameObject.CompareTag("Spikes"))
+        {
+            StartCoroutine(ResetOnDeath());
+        }
+    }
+    public IEnumerator ResetOnDeath()
+    {
+        bbox.SetBool("out", true);
+        controller.enabled = false;
+        yield return new WaitForSeconds(1f);
+
+        transform.position = GameObject.Find(spawnPoint).transform.position;
+        yield return new WaitForSeconds(.1f);
+        bbox.SetBool("out", true);
+        controller.enabled = true;
+    }
+
  public IEnumerator ResetPos()
     {
+        bbox.SetBool("out", true);
         controller.enabled = false;
         transform.position = GameObject.Find(spawnPoint).transform.position;
         yield return new WaitForSeconds(.1f);
@@ -91,6 +117,7 @@ public class PlayerController : MonoBehaviour
     }
     public IEnumerator LoadNewScene(string levelName)
     {
+        bbox.SetBool("out", false);
         controller.enabled = false;
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(levelName);

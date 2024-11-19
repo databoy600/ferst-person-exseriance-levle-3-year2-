@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Helath : MonoBehaviour
 {
+
     public int hp;
 
-    int maxHp;
+    public int maxHp;
 
     public bool respwan;
 
@@ -17,6 +18,7 @@ public class Helath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hp = maxHp = 25;
         maxHp = hp;
     }
 
@@ -25,6 +27,8 @@ public class Helath : MonoBehaviour
     {
         if (hp <= 0)
         {
+            hp = maxHp;
+            
             if(!active)
             {
                 StartCoroutine(RespaweObject());
