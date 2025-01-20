@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 2d16a9d1b7905434d90744ce2187792b
   - enabled: 1
-    path: Assets/Scenes/fps 1.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/fps 2.unity
-    guid: cbf333bf98554374495b1d854c543477
+    path: Assets/Scenes/fps project coding/levle 1.unity
+    guid: 9dec07e576a6a434fa6ac64f0f7c735d
   m_configObjects: {}
