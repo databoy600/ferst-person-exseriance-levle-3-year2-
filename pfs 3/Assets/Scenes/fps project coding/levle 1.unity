@@ -23428,10 +23428,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2548831695590005562, guid: c1106d8dbf8b8ed46adaa377ed7a5290,
+        type: 3}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548831695590005562, guid: c1106d8dbf8b8ed46adaa377ed7a5290,
+        type: 3}
+      propertyPath: damageAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3344222615306360553, guid: c1106d8dbf8b8ed46adaa377ed7a5290,
         type: 3}
       propertyPath: m_Name
       value: enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630843008099429826, guid: c1106d8dbf8b8ed46adaa377ed7a5290,
+        type: 3}
+      propertyPath: hp
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6107655830849654229, guid: c1106d8dbf8b8ed46adaa377ed7a5290,
         type: 3}
@@ -44898,10 +44913,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1342351581}
-    - targetCorrespondingSourceObject: {fileID: 1459012260942787861, guid: def69ee1577b3b74ab3b573c57bc32fa,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1342351586}
   m_SourcePrefab: {fileID: 100100000, guid: def69ee1577b3b74ab3b573c57bc32fa, type: 3}
 --- !u!1 &1120386566
 GameObject:
@@ -49832,22 +49843,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1342351586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1342351566}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f37d5e3c61ca174dad8c795d30876aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sword: {fileID: 2084998751}
-  CanAttack: 1
-  AttckCooldwon: 1
-  damage: 14
 --- !u!43 &1348448720
 Mesh:
   m_ObjectHideFlags: 0
@@ -62183,6 +62178,7 @@ GameObject:
   - component: {fileID: 2084998756}
   - component: {fileID: 2084998757}
   - component: {fileID: 2084998758}
+  - component: {fileID: 2084998759}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -62336,6 +62332,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a8c9b29f93e224f8b590c2b1e1632d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2084998759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084998751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f37d5e3c61ca174dad8c795d30876aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sword: {fileID: 2084998751}
+  CanAttack: 1
+  AttckCooldwon: 5
+  IsAttacking: 0
+  damage: 14
 --- !u!1 &2096340568
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,19 +8,9 @@ public class SwordSwingScript : MonoBehaviour
 
     public bool CanAttack = true; 
     public float AttckCooldwon = 1.0f;
+    public bool IsAttacking = false;
 
     public int damage;
-  //  public bool didDamage;
-    
-
-    // Start is called before the first frame update
-//    void OnTriggerEnter(Collider other)
-//    {
-//      if(other.GameObject>CompareTag("Sword"))
-//      {
-       
-//      }
-//    }
 
 
    
@@ -47,6 +37,7 @@ public class SwordSwingScript : MonoBehaviour
 
     public void SwordAttack()
     {
+        IsAttacking = true;
         CanAttack = false;
         Animator anim = Sword.GetComponent<Animator>();
         anim.SetTrigger("Attack");
@@ -57,7 +48,14 @@ public class SwordSwingScript : MonoBehaviour
 
     IEnumerator ResetAttackCooldown()
     {
+        StartCoroutine(ResetAttackBool());
         yield return new WaitForSeconds(AttckCooldwon);
         CanAttack = true;
+    }
+
+    IEnumerator ResetAttackBool()
+    {
+        yield return new WaitForSeconds(1.0f);
+        IsAttacking = false;
     }
 }
