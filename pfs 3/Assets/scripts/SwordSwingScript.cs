@@ -10,7 +10,7 @@ public class SwordSwingScript : MonoBehaviour
     public float AttckCooldwon = 1.0f;
     public bool IsAttacking = false;
 
-    public int damage;
+    
 
 
    
