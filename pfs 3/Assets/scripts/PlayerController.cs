@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
 
     public float jumpForce;
 
+    private int _numberOfJump;
+    [SerializeField] private int MaxNumberOfJumps = 2;
+
    public bool doublejump;
 
     Vector2 inputs;
@@ -136,6 +139,27 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(levelName);
     }
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (!context.started) return;
+        if (!IsGrounded() && _numberOfJump >= maxNumberOfJumps) return;
+        if(_numberOfJump == 0) StartCoroutine(WaitForLanding());
+
+        _numberOfJumps++;
+        _velocity += jumpsPower;
+        
+    }
+    
+    private IEnumerator waitFDorLanding()
+    {
+        yield return new WaitUntil(() => !IsGrounded());
+        yield return new WaitUntil(IsGrounded);
+
+        _numberOfJumps = 0;
+    }
+
+    private bool IsGrounded() => _characterController.isGrounded;
 
 
 }
