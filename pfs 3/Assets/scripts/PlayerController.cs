@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+//using unityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private Vector3 crouchScale = new Vector3(1, 0.5f, 1);
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public string spawnPoint;
     public Animator bbox;
 
+    public int jumpCount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,13 +58,6 @@ public class PlayerController : MonoBehaviour
        Rotation();
        Jump();
 
-      // if (Input.GetButtonDown("jump"))
-       // {
-           // if (isGrounded())
-           // {
-
-           // }
-       // }
        if (transform.position.y < -20f)
        {
         StartCoroutine(ResetOnDeath());
@@ -94,11 +90,18 @@ public class PlayerController : MonoBehaviour
         {
             gravity -= Time.deltaTime * gravityMultiplier;
         }
-        if (controller.isGrounded && Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
-            gravity = Mathf.Sqrt(jumpForce);
-
-            
+            if (controller.isGrounded)
+            {
+                gravity = Mathf.Sqrt(jumpForce);
+                jumpCount = 1;
+            }
+            else if (jumpCount > 0)
+            {
+                gravity = Mathf.Sqrt(jumpForce);
+                jumpCount--;
+            }
         }
        
   
@@ -139,27 +142,4 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(levelName);
     }
-
-    public void Jump(InputAction.CallbackContext context)
-    {
-        if (!context.started) return;
-        if (!IsGrounded() && _numberOfJump >= maxNumberOfJumps) return;
-        if(_numberOfJump == 0) StartCoroutine(WaitForLanding());
-
-        _numberOfJumps++;
-        _velocity += jumpsPower;
-        
-    }
-    
-    private IEnumerator waitFDorLanding()
-    {
-        yield return new WaitUntil(() => !IsGrounded());
-        yield return new WaitUntil(IsGrounded);
-
-        _numberOfJumps = 0;
-    }
-
-    private bool IsGrounded() => _characterController.isGrounded;
-
-
 }
