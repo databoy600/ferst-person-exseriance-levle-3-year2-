@@ -58,4 +58,5 @@ public class SwordSwingScript : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         IsAttacking = false;
     }
+    
 }

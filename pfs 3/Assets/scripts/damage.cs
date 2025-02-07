@@ -7,19 +7,19 @@ public class DamageScript : MonoBehaviour
 {
     //public transform attackpoint;
     // public float attackRange = 0.5f;
-    public float damageAmount;
+    public float damage;
 
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.CompareTag("Enemy"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+           Attack();
         }
     }
-    //  void Attack(){
-    //     playerObject.GetComponent<EnemyHealth>().health -= damageAmount;
-    //     attackDelay = Time.time + attackRate;
-    // }
+      void Attack(){
+        GameObject.GetComponent<Health>().health -= damageAmount;
+         attackDelay = Time.time + attackRate;
+    }
 
   
 }
