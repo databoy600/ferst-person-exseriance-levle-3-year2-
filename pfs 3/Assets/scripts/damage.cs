@@ -8,6 +8,13 @@ public class DamageScript : MonoBehaviour
     //public transform attackpoint;
     // public float attackRange = 0.5f;
     public float damage;
+    public float damageAmount;
+    public float attackRate;
+    public float attackDelay;
+    
+    GameObject EnemyObject;
+
+   
 
     void OnTriggerEnter(Collider collider)
     {
@@ -17,7 +24,7 @@ public class DamageScript : MonoBehaviour
         }
     }
       void Attack(){
-        GameObject.GetComponent<Health>().health -= damageAmount;
+        EnemyObject.GetComponent<Health>().health -= damageAmount;
          attackDelay = Time.time + attackRate;
     }
 

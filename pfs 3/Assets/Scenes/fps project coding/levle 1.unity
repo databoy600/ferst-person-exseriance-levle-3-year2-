@@ -57654,7 +57654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30bc2ea95c37c243994848d663838fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpCount: 1
 --- !u!65 &1727156376
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62733,6 +62732,7 @@ GameObject:
   - component: {fileID: 2084998757}
   - component: {fileID: 2084998758}
   - component: {fileID: 2084998759}
+  - component: {fileID: 2084998760}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -62902,6 +62902,18 @@ MonoBehaviour:
   CanAttack: 1
   AttckCooldwon: 5
   IsAttacking: 0
+--- !u!114 &2084998760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084998751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2f3444a50b2054a9cc8d537ddc26b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2096340568
 GameObject:
   m_ObjectHideFlags: 0
