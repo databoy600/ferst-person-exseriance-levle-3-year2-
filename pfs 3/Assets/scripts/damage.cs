@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class DamageScript : MonoBehaviour
 {
+  public GameObject Sword;
     //public transform attackpoint;
     // public float attackRange = 0.5f;
-    public float damage;
+    public int damage;
     public float damageAmount;
     public float attackRate;
     public float attackDelay;
@@ -24,7 +25,7 @@ public class DamageScript : MonoBehaviour
         }
     }
       void Attack(){
-        EnemyObject.GetComponent<Health>().health -= damageAmount;
+        EnemyObject.GetComponent<Helath>().hp -= damage;
          attackDelay = Time.time + attackRate;
     }
 
